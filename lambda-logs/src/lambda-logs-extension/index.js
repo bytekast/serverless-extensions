@@ -1,17 +1,18 @@
 #!/usr/bin/env node
 const { register, next } = require('./extensions-api')
+const { startLogServer, registerLogServer } = require('./logs-api')
 
 const EventType = {
   INVOKE: 'INVOKE',
   SHUTDOWN: 'SHUTDOWN'
 }
 
-function handleShutdown(event) {
+const handleShutdown = event => {
   console.log('shutdown', { event })
   process.exit(0)
 }
 
-function handleInvoke(event) {
+const handleInvoke = event => {
   console.log('invoke')
 }
 
@@ -25,8 +26,16 @@ function handleInvoke(event) {
   const extensionId = await register()
   console.log('extensionId', extensionId)
 
-  // execute extensions logic
+  try {
+    const logsUrl = startLogServer()
+    console.log(`logsUrl`, logsUrl)
+    await registerLogServer()
+    console.log(`logServer registered`)
+  } catch (e) {
+    console.err(e)
+  }
 
+  // execute extensions logic
   while (true) {
     console.log('next')
     const event = await next(extensionId)

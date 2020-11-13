@@ -3,7 +3,7 @@ const { basename } = require('path')
 
 const baseUrl = `http://${process.env.AWS_LAMBDA_RUNTIME_API}/2020-01-01/extension`
 
-async function register() {
+const register = async () => {
   const res = await fetch(`${baseUrl}/register`, {
     method: 'post',
     body: JSON.stringify({
@@ -25,7 +25,7 @@ async function register() {
   return res.headers.get('lambda-extension-identifier')
 }
 
-async function next(extensionId) {
+const next = async extensionId => {
   const res = await fetch(`${baseUrl}/event/next`, {
     method: 'get',
     headers: {
