@@ -1,0 +1,10 @@
+org: rowell
+app: serverless-extensions
+name: lambda-logs
+component: aws-lambda-layer
+
+inputs:
+  src: ./src
+  runtimes:
+    - nodejs10.x
+    - nodejs12.x
