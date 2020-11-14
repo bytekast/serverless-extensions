@@ -1,10 +1,11 @@
 const http = require('http')
 const fetch = require('node-fetch')
+const { basename } = require('path')
 
 const baseUrl = `http://${process.env.AWS_LAMBDA_RUNTIME_API}/2020-08-15/logs/subscribe`
 const host = '0.0.0.0'
 const port = 4243
-const url = `http://localhost:${port}`
+const url = `http://${host}:${port}`
 
 const requestListener = function(req, res) {
   console.log(`logListener`, req)
@@ -37,7 +38,8 @@ const registerLogServer = async () => {
       }
     }),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Lambda-Extension-Name': basename(__dirname)
     }
   })
 
