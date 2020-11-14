@@ -1,32 +1,26 @@
-const http = require('http')
 const fetch = require('node-fetch')
+const express = require('express')
 
 const baseUrl = `http://${process.env.AWS_LAMBDA_RUNTIME_API}/2020-08-15/logs`
 const host = '0.0.0.0'
 const port = 4243
 const url = `http://${host}:${port}`
 
-const requestListener = function(req, res) {
-  let data = []
-  req
-    .on("data", d => {
-      data.push(d)
-    })
-    .on("end", () => {
-      data = Buffer.concat(data).toString()
-      res.statusCode = 201
-      res.end()
-    })
-  console.log(`logListener`, data)
-}
-
 const startLogServer = () => {
-  const server = http.createServer(requestListener)
-  server.listen(port, host, () => {
+  const app = express()
+  app.use(express.json())
+
+  app.post('/', (req, res) => {
+    console.log(req.body)
+    res.status(201).send({ message: 'ok' })
+  })
+
+  app.listen(port, () => {
     console.log(`Server is running on http://${host}:${port}`)
   })
   return url
 }
+
 
 const registerLogServer = async (extensionId) => {
   console.log(`logs api baseUrl`, baseUrl)
@@ -38,9 +32,9 @@ const registerLogServer = async (extensionId) => {
         'function'
       ],
       'buffering': {
-        'maxItems': 10000,
+        'maxItems': 1000,
         'maxBytes': 262144,
-        'timeoutMs': 1000
+        'timeoutMs': 100
       },
       'destination': {
         'protocol': 'HTTP',
