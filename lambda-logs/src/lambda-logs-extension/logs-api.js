@@ -1,10 +1,10 @@
 const http = require('http')
 const fetch = require('node-fetch')
 
-const baseUrl = `http://${process.env.AWS_LAMBDA_RUNTIME_API}/2020-01-01/extension`
+const baseUrl = `http://${process.env.AWS_LAMBDA_RUNTIME_API}/2020-08-15/logs/subscribe`
 const host = '0.0.0.0'
 const port = 4243
-const url = `http://sandbox:${port}`
+const url = `http://localhost:${port}`
 
 const requestListener = function(req, res) {
   console.log(`logListener`, req)
@@ -19,7 +19,7 @@ const startLogServer = () => {
 }
 
 const registerLogServer = async () => {
-  const res = await fetch(`http://${process.env.AWS_LAMBDA_RUNTIME_API}/2020-08-15/logs/subscribe`, {
+  const res = await fetch(baseUrl, {
     method: 'post',
     body: JSON.stringify({
       'types': [
@@ -33,7 +33,7 @@ const registerLogServer = async () => {
       },
       'destination': {
         'protocol': 'HTTP',
-        'URI': 'url'
+        'URI': url
       }
     }),
     headers: {
