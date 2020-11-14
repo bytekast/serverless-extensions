@@ -29,7 +29,7 @@ const handleInvoke = event => {
   try {
     const logsUrl = startLogServer()
     console.log(`logsUrl`, logsUrl)
-    await registerLogServer()
+    await registerLogServer(extensionId)
     console.log(`logServer registered`)
   } catch (e) {
     console.err(e)

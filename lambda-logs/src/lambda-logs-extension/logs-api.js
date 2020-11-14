@@ -1,14 +1,23 @@
 const http = require('http')
 const fetch = require('node-fetch')
-const { basename } = require('path')
 
-const baseUrl = `http://${process.env.AWS_LAMBDA_RUNTIME_API}/2020-08-15/logs/subscribe`
+const baseUrl = `http://${process.env.AWS_LAMBDA_RUNTIME_API}/2020-08-15/logs`
 const host = '0.0.0.0'
 const port = 4243
 const url = `http://${host}:${port}`
 
 const requestListener = function(req, res) {
-  console.log(`logListener`, req)
+  let data = []
+  req
+    .on("data", d => {
+      data.push(d)
+    })
+    .on("end", () => {
+      data = Buffer.concat(data).toString()
+      res.statusCode = 201
+      res.end()
+    })
+  console.log(`logListener`, data)
 }
 
 const startLogServer = () => {
@@ -19,32 +28,33 @@ const startLogServer = () => {
   return url
 }
 
-const registerLogServer = async () => {
+const registerLogServer = async (extensionId) => {
+  console.log(`logs api baseUrl`, baseUrl)
   const res = await fetch(baseUrl, {
-    method: 'post',
+    method: 'put',
     body: JSON.stringify({
       'types': [
         'platform',
         'function'
       ],
       'buffering': {
-        'maxItems': 1000,
-        'maxBytes': 10240,
-        'timeoutMs': 100
+        'maxItems': 10000,
+        'maxBytes': 262144,
+        'timeoutMs': 1000
       },
       'destination': {
         'protocol': 'HTTP',
-        'URI': url
+        'URI': `http://sandbox:${port}`
       }
     }),
     headers: {
       'Content-Type': 'application/json',
-      'Lambda-Extension-Name': basename(__dirname)
+      'Lambda-Extension-Identifier': extensionId
     }
   })
 
   if (!res.ok) {
-    console.error('register failed', await res.text())
+    console.error('register failed', res.status, res.statusText, await res.text())
   }
 
   return res.headers.get('lambda-extension-identifier')
