@@ -8,12 +8,12 @@ const EventType = {
 }
 
 const handleShutdown = event => {
-  console.log('shutdown', { event })
+  console.log('shutdown', event)
   process.exit(0)
 }
 
 const handleInvoke = event => {
-  console.log('invoke')
+  console.log('invoke', event)
 }
 
 (async function main() {
