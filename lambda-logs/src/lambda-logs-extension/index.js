@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const { register, next } = require('./extensions-api')
 const { startLogServer, registerLogServer } = require('./logs-api')
+const { send } = require('./logsCollector')
 
 const EventType = {
   INVOKE: 'INVOKE',
@@ -8,36 +9,34 @@ const EventType = {
 }
 
 const handleShutdown = event => {
-  console.log('shutdown', event)
+  console.log('shutdown event received', JSON.stringify(event))
+  send(event)
   process.exit(0)
 }
 
 const handleInvoke = event => {
-  console.log('invoke', event)
+  console.log('invoke event received', JSON.stringify(event))
+  send(event)
 }
 
 (async function main() {
   process.on('SIGINT', () => handleShutdown('SIGINT'))
   process.on('SIGTERM', () => handleShutdown('SIGTERM'))
 
-  console.log('hello from extension')
-
-  console.log('register')
   const extensionId = await register()
-  console.log('extensionId', extensionId)
+  console.log(`Lambda Logs Extension registered. Extension Id: ${extensionId}`)
 
   try {
     const logsUrl = startLogServer()
-    console.log(`logsUrl`, logsUrl)
+    console.log(`Log Server started: ${logsUrl}`)
     await registerLogServer(extensionId)
-    console.log(`logServer registered`)
+    console.log(`Log Server registered: ${logsUrl}`)
   } catch (e) {
     console.err(e)
   }
 
   // execute extensions logic
   while (true) {
-    console.log('next')
     const event = await next(extensionId)
     switch (event.eventType) {
       case EventType.SHUTDOWN:

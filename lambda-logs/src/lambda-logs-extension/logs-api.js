@@ -1,5 +1,6 @@
 const fetch = require('node-fetch')
 const express = require('express')
+const { send } = require('./logsCollector')
 
 const baseUrl = `http://${process.env.AWS_LAMBDA_RUNTIME_API}/2020-08-15/logs`
 const host = '0.0.0.0'
@@ -11,7 +12,8 @@ const startLogServer = () => {
   app.use(express.json())
 
   app.post('/', (req, res) => {
-    console.log(req.body)
+    console.log(JSON.stringify(req.body))
+    send(req.body)
     res.status(201).send({ message: 'ok' })
   })
 
@@ -23,7 +25,6 @@ const startLogServer = () => {
 
 
 const registerLogServer = async (extensionId) => {
-  console.log(`logs api baseUrl`, baseUrl)
   const res = await fetch(baseUrl, {
     method: 'put',
     body: JSON.stringify({

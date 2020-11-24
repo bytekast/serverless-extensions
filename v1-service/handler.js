@@ -1,19 +1,33 @@
-'use strict';
+'use strict'
 
-module.exports.hello = async event => {
+const hello = async event => {
   console.log('HELLO THERE!!!!')
   return {
     statusCode: 200,
     body: JSON.stringify(
       {
         message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
+        input: event
       },
       null,
       2
-    ),
-  };
+    )
+  }
+}
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
-};
+const logs = async event => {
+  console.log(`Received ${event.body}`)
+  return {
+    statusCode: 201,
+    body: JSON.stringify(
+      {
+        message: 'Ok'
+      }
+    )
+  }
+}
+
+module.exports = {
+  hello,
+  logs
+}

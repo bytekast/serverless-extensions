@@ -6,4 +6,4 @@ name: expresso
 inputs:
   src: ./
   layers:
-    - arn:aws:lambda:us-east-1:295279419433:layer:lamb3da-logs:39
+    - arn:aws:lambda:us-east-1:295279419433:layer:lambda-logs:48
