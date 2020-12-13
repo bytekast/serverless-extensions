@@ -1,0 +1,17 @@
+{
+  "uid": "evt_Duw3MPkZQjcegPjSG2tbuWTr",
+  "event": "lambda.extensions.event",
+  "org_uid": "9MJvd98pmm7B77YdMQ",
+  "data": {
+    "object": {
+      "eventType": "INVOKE",
+      "requestId": "163df638-8a13-48be-9a98-cf3966dbf52c",
+      "invokedFunctionArn": "arn:aws:lambda:us-east-1:295279419433:function:v1-service-dev-hello",
+      "deadlineMs": 1607325601257,
+      "tracing": {
+        "type": "X-Amzn-Trace-Id",
+        "value": "Root=1-5fcdd79b-753dc9f95ebe94c829c8e908;Parent=27b740d112a87c74;Sampled=0"
+      }
+    }
+  }
+}

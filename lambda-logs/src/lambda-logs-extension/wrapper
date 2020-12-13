@@ -1,0 +1,7 @@
+#!/bin/bash
+set -euo pipefail
+
+#printenv
+echo $@
+args=("$@")
+exec "${args[@]}"

@@ -9,14 +9,14 @@ const EventType = {
 }
 
 const handleShutdown = event => {
-  console.log('shutdown event received', JSON.stringify(event))
-  send(event)
+  //console.log('shutdown event received', JSON.stringify(event))
+  //send(event)
   process.exit(0)
 }
 
 const handleInvoke = event => {
-  console.log('invoke event received', JSON.stringify(event))
-  send(event)
+  //console.log('invoke event received', JSON.stringify(event))
+  //send(event)
 }
 
 (async function main() {

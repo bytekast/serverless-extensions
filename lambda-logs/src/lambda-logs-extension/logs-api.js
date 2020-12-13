@@ -12,8 +12,8 @@ const startLogServer = () => {
   app.use(express.json())
 
   app.post('/', (req, res) => {
-    console.log(JSON.stringify(req.body))
-    send(req.body)
+    //console.log(JSON.stringify(req.body))
+    //send(req.body)
     res.status(201).send({ message: 'ok' })
   })
 

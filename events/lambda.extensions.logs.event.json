@@ -1,0 +1,47 @@
+{
+  "uid": "evt_24fx8rwjo4CXWT5khEegsj7w",
+  "event": "lambda.extensions.logs.event",
+  "org_uid": "9MJvd98pmm7B77YdMQ",
+  "data": {
+    "object": [
+      {
+        "type": "platform.start",
+        "time": "2020-12-07T23:59:06.206Z",
+        "record": {
+          "version": "$LATEST",
+          "requestId": "e109c0da-a0f9-4733-a18a-8160d058058c"
+        }
+      },
+      {
+        "type": "function",
+        "time": "2020-12-07T23:59:06.210Z",
+        "record": "2020-12-07T23:59:06.210Z\te109c0da-a0f9-4733-a18a-8160d058058c\tINFO\tHELLO THERE!!!!\n"
+      },
+      {
+        "type": "function",
+        "time": "2020-12-07T23:59:06.211Z",
+        "record": "2020-12-07T23:59:06.211Z\te109c0da-a0f9-4733-a18a-8160d058058c\tINFO\tSERVERLESS_ENTERPRISE {\"c\":true,\"b\":\"H4sIAAAAAAAAA7VXbU/cRhD+K8jqh1bFvt31uyOk0gvkpQFR7pLSAKqW9fjOje01axvuEt1/76x97xwUIgWdhD3zzOzszOyz42+GVOkoLYzIqLLK5CMoamPfqMQYcv4JVJVKrSMWQWmd5lDVPC9RwggjJmUm8YfMjtwwIp7FKPmMMAW3DeLexQgDSkJBYm5ykoSm49u2yWnAzYB6JCZugD+hPU9LQHSteFFxUetF942STzPJ0cu3eTzDDlWZVcmLR6OUJSiuXZzyvIOvuTWTplj4x62oepi2oJ3bIaHeDhTxU6Buz3HTrWlExPL8MKQh+sco+7KoYVLrPWAUAl6SFG3f4m3bZp64AdMPCJhOyKjJBYaSsJgI23V9YYeInwyXK5xLWR9Q000ECCq4ydwkoYHnEO4lAInwAhftHPHqjCus+IErBLgeCyi4yY3tsFcDrHIG8QExZlgdPqp2VOGxtH5f73TJlmqkN1A0WbZv8LLMUrFRS1B3oDKoKhOzCoVeotJrojwVMEfdUXMu6Ko8WihiuEPJItYHaBP15hiyTM4Dlg1Wzts3hMzLpob5zvl9ZWU8v4m5sVSdN0XdNclKaxUyhn8rizKLhm0SFmAYdalpcBu8qk260p1ALtV0kH7VvihhzrbqYwW6wt+uDFVVV0bk2I7n+S7bvzLGwMuhrHmGYupRQm3fm4u1FUp9xpgXEBTq9KmigzoexZZFIVeKT39vkgSLpxXMsQM2247gDJTApsG0drFgxwe2G9q+uwTqtudpAepj2aXFsWzm257j+HQJelf1ZRYP9Ck0ooRnFaxUBZatwGYu7mTXAH2JGTaitSWaqpb5YLMl5zoTi2Bul2jdYLs7NyDHz+qPnSYrvz99OBweDYbbwEOllVwVEYYYdSFGyzaIWOgyP3Ro6Nh2tOjT6DkRPNVTHeKJzuoAOtlfYHX8NgO/r85fzusbLi5+CD9tLfJBjt4o2ZTz4vUwzb0uzb3npBHNB7UCns/tNVX1KOsRv3c5L+l1wmzuu3Dj+jpiN+acBT6xBWGcAvVg2+dRcXeW8TqRKkePWVo0kx2QQyXGqJ54D+qCyq527dnWxxL7g+GRY48BjxVg8JTgkWQhCYKHuH7ZIKUbl0gjObKUpoEr4x3eVdnP57/sXYAs9P8zJQVyrVR7v+0xyyVv3n69MpAnqhJaOmEu0VzScju+orMGM4xPnbzAVOOLfqymGuBS/ZzGGbS0g3en3QrUrYbNZvs/KBw73BmOY2+F4wQb4Vzr2/8O+2+N+HmZjngN93xqjeu6XCL+53qjoft5gR3IBgn0gb+FeiextZqW1lYG5noAT7HbGuBQCE2k7SFcJ5stVJm2CJo1TUh9ZzLe1J9D1e6hBfkqyEfpJuC1zJH+zxQk6eQJPwN9iSzv5Qf2G5YWTEC03F6m1pLkLJ7zr7LQmcQW345yxVfPHKHWrI/0fBFDvO7l4vTEzo/+IvLw5Pj2n9HBzvXmwyIyxmsQPd0M0aIN9n4l+Peo1VEpNQcghfp2gPTnYddsYN9iwc94rXmit6CvLfUJ1GOpY31zNNzUfgf9bjk4luqeK8wJPiwuiTU9TgPqsP2AiAzRqKznW55j6XsIlJJqdbG0r8e8JbM1Sb/JSpXWG7KjiYBSX4LdSdilOUFKaNtolxI7THxpJ++Ffm1qfUlnYDPw+blR8h5zb7Tz6cdUS47925CRv6f09vR9yFQwdpcWHeDW6f/xifU/5ccXRfDn+anQqS2zBr+8VofVsVg3KmuaH+DwX2myeul3A87rmWzn9Vn3CYGPl9cLmmon+cvr2ew/mTiCnvkNAAA=\",\"origin\":\"sls-agent\"}\n"
+      },
+      {
+        "type": "platform.end",
+        "time": "2020-12-07T23:59:06.221Z",
+        "record": {
+          "requestId": "e109c0da-a0f9-4733-a18a-8160d058058c"
+        }
+      },
+      {
+        "type": "platform.report",
+        "time": "2020-12-07T23:59:06.221Z",
+        "record": {
+          "requestId": "e109c0da-a0f9-4733-a18a-8160d058058c",
+          "metrics": {
+            "billedDurationMs": 13,
+            "maxMemoryUsedMB": 110,
+            "durationMs": 12.79,
+            "memorySizeMB": 1024
+          }
+        }
+      }
+    ]
+  }
+}

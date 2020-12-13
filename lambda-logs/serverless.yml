@@ -1,10 +1,11 @@
 org: rowell
 app: serverless-extensions
-name: lambda-logs
-component: aws-lambda-layer
+service: platform-extension
+provider: aws
 
-inputs:
-  src: ./src
-  runtimes:
-    - nodejs10.x
-    - nodejs12.x
+layers:
+  platform-extension:
+    path: src
+    compatibleRuntimes:
+      - nodejs10.x
+      - nodejs12.x
