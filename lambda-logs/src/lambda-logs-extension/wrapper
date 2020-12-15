@@ -5,3 +5,5 @@ set -euo pipefail
 echo $@
 args=("$@")
 exec "${args[@]}"
+
+#/var/lang/bin/node --expose-gc --max-http-header-size 81920 --max-semi-space-size=51 --max-old-space-size=922 /var/runtime/index.js
